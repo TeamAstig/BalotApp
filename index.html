@@ -1,0 +1,72 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+	<title>Balot</title>
+    
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=0">
+	<style type="text/css">
+		/* Prevent copy paste for all elements except text fields */
+		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+		input, textarea  { -webkit-user-select:text; }
+		body { background-color:white; color:black }
+	</style>
+	<script src='intelxdk.js'></script>
+	<script type="text/javascript">
+		/* This code is used to run as soon as Intel activates */
+		var onDeviceReady=function(){
+		//hide splash screen
+		intel.xdk.device.hideSplashScreen();
+        intel.xdk.device.setRotateOrientation("landscape");
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script src='http://www.mojiva.com/js/mobile.js'></script>
+</head>
+<body>
+
+    <!-- melonJS Library -->
+    <script type="text/javascript" src="lib/melonJS-1.0.0-min.js" ></script>
+    <script type="text/javascript" src="build/clumsy.js" ></script>
+    <!-- Bootstrap & Mobile optimization tricks -->
+    <script type="text/javascript">
+      window.onReady(function onReady() {
+        game.onload();
+
+        // Mobile browser hacks
+        if (me.device.isMobile && !navigator.isCocoonJS) {
+          // Prevent the webview from moving on a swipe
+          window.document.addEventListener("touchmove", function (e) {
+            e.preventDefault();
+            window.scroll(0, 0);
+            return false;
+          }, false);
+
+          // Scroll away mobile GUI
+          (function () {
+            window.scrollTo(0, 1);
+            me.video.onresize(null);
+          }).defer();
+
+          me.event.subscribe(me.event.WINDOW_ONRESIZE, function (e) {
+            window.scrollTo(0, 1);
+          });
+        }
+      });
+    </script>
+    
+        <!-- ADS -->
+ <div class="google">
+     <script type="text/javascript">
+        ( function() {
+        CHITIKA = window.CHITIKA ? window.CHITIKA : { 'units' : [] };
+        CHITIKA.publisher = 'HIVE';
+        var s = document.createElement('script');
+        s.src = '//cdn.chitika.net/getads.js';
+        try { document.getElementsByTagName('head')[0].appendChild(s); } catch(e) { document.write(s.outerHTML); }
+        }());
+     </script>
+</div>   
+</body>
+</html>
